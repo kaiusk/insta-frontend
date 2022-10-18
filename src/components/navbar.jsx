@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userProfile } from "../redux/actions/userActions";
 import { logout } from "../redux/reducers/userReducer";
+import UserData from "./userData";
 
 export default function Navbar(props) {
-  const { userInfo, profile } = useSelector(state => state.user);
+  const { userInfo } = useSelector(state => state.user);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,31 +21,7 @@ export default function Navbar(props) {
   if (userInfo.ID) {
     return (
       <nav className="navbar navbar-expand-lg navbar-transparent navbar-light shadow-soft navbar-theme-primary">
-        <div className="profile-image bg-primary shadow-inset border border-light rounded-circle p-2 mx-3">
-          <img
-            src={userInfo.ProfileImageUrl}
-            className="card-img-top rounded-circle"
-            alt={userInfo.Name}
-          />
-        </div>
-        <div className={"d-flex flex-column mr-3"}>
-          <h4>{userInfo.Name}</h4>
-          <p>{userInfo.Bio}</p>
-        </div>
-        <div className={"d-flex flex-row ml-3"}>
-          <span className="badge badge-dark mr-3">
-            <i className="fa-solid fa-message"></i>{" "}
-            <strong>{profile.posts}</strong> posts
-          </span>
-          <span className="badge badge-dark mr-3">
-            <i className="fa-solid fa-user"></i>{" "}
-            <strong>{profile.followers}</strong> followers
-          </span>
-          <span className="badge badge-dark mr-3">
-            <i className="fa-solid fa-user"></i>{" "}
-            <strong>{profile.followees}</strong> following
-          </span>
-        </div>
+        <UserData />
         <button
           type="button"
           className="btn btn-primary btn-pill btn-icon-only mr-2 ml-auto"

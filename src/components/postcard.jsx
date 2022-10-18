@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost } from "../redux/actions/postActions";
+import { Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { format, parseISO } from "date-fns";
 
 export default function PostCard(props) {
   const { loading, error } = useSelector(state => state.posts);
@@ -23,25 +26,19 @@ export default function PostCard(props) {
         <div className="card-body pt-2">
           <div className="media d-flex align-items-center justify-content-between">
             <div className="post-group">
-              <a
-                href="#"
-                data-toggle="tooltip"
-                data-placement="top"
-                title=""
-                data-original-title="23k followers"
-              >
+              <Link to={`/user/` + props.post.Username}>
                 <img
                   className="avatar-sm mr-2 img-fluid rounded-circle"
-                  src="/assets/img/team/profile-picture-2.jpg"
-                  alt="Jo portrait"
+                  src={props.post.ProfileImageUrl}
+                  alt={props.post.Username}
                 />{" "}
                 {props.post.Username}
-              </a>
+              </Link>
             </div>
             <div className="d-flex align-items-center">
               <span className="small">
                 <span className="far fa-calendar-alt mr-2"></span>
-                {props.post.CreationTime}
+                {format(parseISO(props.post.CreationTime), 'dd.mm.yyyy')}
               </span>
             </div>
           </div>
