@@ -3,23 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/actions/userActions";
 import { useEffect } from "react";
 import { show } from "../redux/reducers/toastReducer";
+import { useNavigate } from "react-router";
 
-export default function Login(props) {
-  const { loading, error } = useSelector(state => state.user);
-
+export default function Login() {
+  const { loading, error, userInfo } = useSelector(state => state.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // redirect authenticated user to profile screen
-  /*useEffect(() => {
-    if (userInfo) {
-      navigate('/home')
+  useEffect(() => {
+    if (userInfo && userInfo.ID) {
+      navigate("/");
     }
-  }, [navigate, userInfo])'*/
+  }, [navigate, userInfo]);
 
   useEffect(() => {
     if (error) {
-      console.log(error);
-      //dispatch(setVariant("danger"));
       dispatch(show("Proovi uuesti!"));
     }
   }, [error]);

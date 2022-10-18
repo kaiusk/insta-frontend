@@ -7,9 +7,13 @@ const userToken = localStorage.getItem("token")
   ? localStorage.getItem("token")
   : null;
 
+const userInfo = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : {};
+
 const initialState = {
   loading: false,
-  userInfo: {}, // for user object
+  userInfo,
   userToken, // for storing the JWT
   error: null,
   success: false, // for monitoring the registration process.
@@ -24,6 +28,8 @@ const userSlice = createSlice({
       state.userInfo = {};
       state.profile = {};
       state.userToken = null;
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     }
   },
   extraReducers: {
@@ -34,6 +40,7 @@ const userSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, { payload }) => {
       const tokenContent = jwt_decode(payload.token);
+      localStorage.setItem("user", JSON.stringify(tokenContent.data));
       state.loading = false;
       state.userInfo = tokenContent.data;
       state.userToken = payload.token;

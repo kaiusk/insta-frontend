@@ -6,6 +6,7 @@
     "@types/react-redux": "^7.1.24",
     "browser-sync": "^2.27.4",
     "del": "^6.0.0",
+    "eslint-config-react-app": "^7.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
@@ -21,7 +22,8 @@
     "gulp-uglify": "^3.0.2",
     "gulp-wait": "^0.0.2",
     "merge-stream": "^2.0.0",
-    "node-sass": "^6.0.1"
+    "node-sass": "^6.0.1",
+    "eslint": "5.6.0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
