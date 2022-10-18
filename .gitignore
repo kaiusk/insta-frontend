@@ -10,6 +10,8 @@
 
 # production
 /build
+/.temp
+/.idea
 
 # misc
 .DS_Store
