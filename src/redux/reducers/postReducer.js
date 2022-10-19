@@ -1,4 +1,4 @@
-import { getUserPosts, likePost } from "../actions/postActions";
+import { getUserPosts, likePost, recommendPosts } from "../actions/postActions";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -39,6 +39,22 @@ const postSlice = createSlice({
       //state.posts = payload;
     },
     [likePost.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.likeAdded = false;
+      state.error = payload;
+    },
+    // add like to the posts
+    [recommendPosts.pending]: state => {
+      state.loading = true;
+      state.error = null;
+
+    },
+    [recommendPosts.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.error = null;
+      state.posts = payload;
+    },
+    [recommendPosts.rejected]: (state, { payload }) => {
       state.loading = false;
       state.likeAdded = false;
       state.error = payload;

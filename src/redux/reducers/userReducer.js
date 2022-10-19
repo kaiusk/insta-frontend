@@ -17,7 +17,8 @@ const initialState = {
   userToken, // for storing the JWT
   error: null,
   success: false, // for monitoring the registration process.
-  profile: {}
+  profile: {},
+
 };
 
 const userSlice = createSlice({

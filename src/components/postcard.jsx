@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { likePost } from "../redux/actions/postActions";
-import { Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 
 export default function PostCard(props) {
-  const { loading, error } = useSelector(state => state.posts);
   const dispatch = useDispatch();
 
   function addLike(postId) {
@@ -26,7 +24,7 @@ export default function PostCard(props) {
         <div className="card-body pt-2">
           <div className="media d-flex align-items-center justify-content-between">
             <div className="post-group">
-              <Link to={`/user/` + props.post.Username}>
+              <Link to={`/user/` + props.post.userId}>
                 <img
                   className="avatar-sm mr-2 img-fluid rounded-circle"
                   src={props.post.ProfileImageUrl}

@@ -23,12 +23,25 @@ export const likePost = createAsyncThunk(
   "posts/addLike",
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await api.post(
+      await api.post(
         "http://localhost:3001/api/v1/posts/like/" + id
       );
       return true;
     } catch (error) {
-      //console.log(error);
+      return rejectWithValue("Laiki ei saa lisada :(");
+    }
+  }
+);
+
+export const recommendPosts = createAsyncThunk(
+  "posts/recommend",
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await api.get(
+        "http://localhost:3001/api/v1/posts/recommend/" + id
+      );
+      return data;
+    } catch (error) {
       return rejectWithValue("Laiki ei saa lisada :(");
     }
   }

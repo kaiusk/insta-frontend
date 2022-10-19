@@ -6,16 +6,17 @@ import { show } from "../redux/reducers/toastReducer";
 import { useNavigate } from "react-router";
 
 export default function Login() {
-  const { loading, error, userInfo } = useSelector(state => state.user);
+  const { loading, error, userInfo } = useSelector(state => state.loginUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // redirect authenticated user to profile screen
   useEffect(() => {
+    console.log(userInfo)
     if (userInfo && userInfo.ID) {
       navigate("/");
     }
-  }, [navigate, userInfo]);
+  }, [userInfo]);
 
   useEffect(() => {
     if (error) {
