@@ -15,18 +15,18 @@
 
 */
 
-var autoprefixer = require("gulp-autoprefixer");
-var browserSync = require("browser-sync").create();
-var cleanCss = require("gulp-clean-css");
-var del = require("del");
+const autoprefixer = require("gulp-autoprefixer");
+const browserSync = require("browser-sync").create();
+const cleanCss = require("gulp-clean-css");
+const del = require("del");
 const htmlmin = require("gulp-htmlmin");
 const cssbeautify = require("gulp-cssbeautify");
-var gulp = require("gulp");
+const gulp = require("gulp");
 const npmDist = require("gulp-npm-dist");
-var sass = require("gulp-sass")(require("node-sass"));
-var wait = require("gulp-wait");
-var sourcemaps = require("gulp-sourcemaps");
-var fileinclude = require("gulp-file-include");
+const sass = require("gulp-sass")(require("node-sass"));
+const wait = require("gulp-wait");
+const sourcemaps = require("gulp-sourcemaps");
+const fileinclude = require("gulp-file-include");
 
 // Define paths
 

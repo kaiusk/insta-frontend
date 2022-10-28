@@ -1,11 +1,13 @@
-import { getUserPosts, likePost, recommendPosts } from "../actions/postActions";
+import { getPosts, getUserPosts, likePost, recommendPosts, unlikePost } from "../actions/postActions";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
   error: null,
   posts: [],
-  likeAdded: false
+  discover: [],
+  likeAdded: false,
+  likeRemoved: false
 };
 
 const postSlice = createSlice({
@@ -26,6 +28,18 @@ const postSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+    [getPosts.pending]: state => {
+      state.loading = true;
+      state.error = null;
+    },
+    [getPosts.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.posts = payload;
+    },
+    [getPosts.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
     // add like to the posts
     [likePost.pending]: state => {
       state.loading = true;
@@ -43,6 +57,22 @@ const postSlice = createSlice({
       state.likeAdded = false;
       state.error = payload;
     },
+    // delete like from the posts
+    [unlikePost.pending]: state => {
+      state.loading = true;
+      state.error = null;
+      state.likeRemoved = false;
+    },
+    [unlikePost.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.error = null;
+      state.likeRemoved = true;
+    },
+    [unlikePost.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.likeRemoved = false;
+      state.error = payload;
+    },
     // add like to the posts
     [recommendPosts.pending]: state => {
       state.loading = true;
@@ -52,12 +82,12 @@ const postSlice = createSlice({
     [recommendPosts.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.error = null;
-      state.posts = payload;
+      state.discover = payload;
     },
     [recommendPosts.rejected]: (state, { payload }) => {
       state.loading = false;
-      state.likeAdded = false;
       state.error = payload;
+      state.discover = [];
     }
   }
 });

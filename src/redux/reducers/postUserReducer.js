@@ -1,4 +1,4 @@
-import { userProfile } from "../actions/userActions";
+import { postUserProfile, userProfile } from "../actions/userActions";
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -17,16 +17,16 @@ const postUserSlice = createSlice({
   },
   extraReducers: {
     // user profile
-    [userProfile.pending]: state => {
+    [postUserProfile.pending]: state => {
       state.loading = true;
       state.error = null;
     },
-    [userProfile.fulfilled]: (state, { payload }) => {
+    [postUserProfile.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
       state.pUserInfo = payload;
     },
-    [userProfile.rejected]: (state, { payload }) => {
+    [postUserProfile.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     }

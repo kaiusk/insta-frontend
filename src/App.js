@@ -6,6 +6,7 @@ import Toaster from "./components/toast";
 import Navbar from "./components/navbar";
 import UserPage from "./pages/user";
 import ErrorPage from "./pages/error";
+import Discover from "./pages/discover";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/user/:id" element={<UserPage />} />
+            <Route path="/discover" element={<Discover />} />
           {/*
           <Route path="/register" element={<RegisterScreen />} />
           <Route element={<ProtectedRoute />}>

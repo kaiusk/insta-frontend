@@ -1,4 +1,4 @@
-import { registerUser, userLogin, userProfile } from "../actions/userActions";
+import { followUser, registerUser, unfollowUser, userLogin, userProfile } from "../actions/userActions";
 import { createSlice } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
@@ -17,8 +17,6 @@ const initialState = {
   userToken, // for storing the JWT
   error: null,
   success: false, // for monitoring the registration process.
-  profile: {},
-
 };
 
 const userSlice = createSlice({
@@ -63,20 +61,46 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+    // follow/unfollow
+    [followUser.pending]: state => {
+      state.loading = true;
+      state.error = null;
+    },
+    [followUser.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+    },
+    [followUser.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+    [unfollowUser.pending]: state => {
+      state.loading = true;
+      state.error = null;
+    },
+    [unfollowUser.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+    },
+    [unfollowUser.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
     // user profile
-    [userProfile.pending]: state => {
+    /*[userProfile.pending]: state => {
       state.loading = true;
       state.error = null;
     },
     [userProfile.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
-      state.profile = payload;
+      state.userInfo = payload;
     },
     [userProfile.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-    }
+      state.profile = {};
+    }*/
   }
 });
 export const { logout } = userSlice.actions;

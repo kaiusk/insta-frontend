@@ -12,7 +12,6 @@ export default function Login() {
 
   // redirect authenticated user to profile screen
   useEffect(() => {
-    console.log(userInfo)
     if (userInfo && userInfo.ID) {
       navigate("/");
     }
@@ -42,11 +41,11 @@ export default function Login() {
           <div className="col-12 col-md-8 col-lg-6 justify-content-center">
             <div className="card bg-primary shadow-soft border-light p-4">
               <div className="card-header text-center pb-0">
-                <img src={"./MiNI_logo.svg"} alt="logo" height={60} />
+                <img src={"/assets/img/MINI_logo.png"} alt="logo" height={60} />
                 <h2 className="h4 mt-3">Logi sisse</h2>
               </div>
               <div className="card-body">
-                <form action="#" className="mt-4" onSubmit={handleSubmit}>
+                <form action="#" className="" onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="exampleInputIcon3">Kasutaja</label>
                     <div className="input-group mb-4">
@@ -87,7 +86,7 @@ export default function Login() {
                         />
                       </div>
                     </div>
-                    <div className="d-block d-sm-flex justify-content-between align-items-center mb-4">
+                    {/*<div className="d-block d-sm-flex justify-content-between align-items-center mb-4">
                       <div className="form-check">
                         <input
                           className="form-check-input"
@@ -107,7 +106,7 @@ export default function Login() {
                           Unustasid jälle parooli?
                         </a>
                       </div>
-                    </div>
+                    </div>*/}
                   </div>
                   <button
                     type="submit"

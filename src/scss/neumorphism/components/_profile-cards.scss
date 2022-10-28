@@ -21,7 +21,14 @@
     height: 6rem;
 }
 .profile-image-small{
-    width: 8rem;
-    height: 8rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+@include media-breakpoint-down(md) {
+    .profile-image{
+        width: 3rem;
+        height: 3rem;
+    }
 }
        

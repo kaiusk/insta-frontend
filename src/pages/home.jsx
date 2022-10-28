@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import PostCard from "../components/postcard";
+import PostMedia from "../components/postMedia";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts } from "../redux/actions/postActions";
 import { useNavigate } from "react-router";
@@ -8,7 +9,7 @@ import { logout } from "../redux/reducers/userReducer";
 
 export default function Home() {
     const { userInfo } = useSelector(state => state.loginUser);
-    const { posts, error, loading, likeAdded } = useSelector(
+    const { posts, error, loading, likeAdded, likeRemoved } = useSelector(
         state => state.posts
     );
     const dispatch = useDispatch();
@@ -37,13 +38,23 @@ export default function Home() {
         if (!loading && likeAdded) {
             dispatch(setVariant("primary"));
             dispatch(show("Laik lisatud!"));
+            dispatch(getUserPosts(userInfo.ID));
         }
-    }, [loading, likeAdded, dispatch]);
+    }, [likeAdded]);
+
+    useEffect(() => {
+        if (!loading && likeRemoved) {
+            dispatch(setVariant("primary"));
+            dispatch(show("Laik kustutatud!"));
+            dispatch(getUserPosts(userInfo.ID));
+        }
+    }, [likeRemoved]);
 
     return (
         <div className="row mt-4">
+            <PostMedia/>
             {posts.map(p => {
-                return [<PostCard post={p} key={p.ID}/>];
+                return [<PostCard post={p} key={p.postId}/>];
             })}
         </div>
     );
