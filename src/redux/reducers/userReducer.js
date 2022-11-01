@@ -1,4 +1,4 @@
-import { followUser, registerUser, unfollowUser, userLogin, userProfile } from "../actions/userActions";
+import { followUser, unfollowUser, userLogin } from "../actions/userActions";
 import { createSlice } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
@@ -25,7 +25,6 @@ const userSlice = createSlice({
   reducers: {
     logout: state => {
       state.userInfo = {};
-      state.profile = {};
       state.userToken = null;
       localStorage.removeItem("token");
       localStorage.removeItem("user");
@@ -45,19 +44,6 @@ const userSlice = createSlice({
       state.userToken = payload.token;
     },
     [userLogin.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
-    },
-    // register user
-    [registerUser.pending]: state => {
-      state.loading = true;
-      state.error = null;
-    },
-    [registerUser.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.success = true; // registration successful
-    },
-    [registerUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },

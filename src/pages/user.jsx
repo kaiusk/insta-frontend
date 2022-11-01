@@ -22,10 +22,10 @@ export default function UserPage() {
     }, [id])
 
     function follow() {
-        pUserInfo.follow ? dispatch(unfollowUser(pUserInfo.ID)) : dispatch(followUser(pUserInfo.ID))
+        pUserInfo.follow ? dispatch(unfollowUser(pUserInfo.id)) : dispatch(followUser(pUserInfo.id))
         setTimeout(()=>{
             dispatch(postUserProfile(id))
-            dispatch(userProfile(userInfo.ID))
+            dispatch(userProfile(userInfo.id))
         }, 500)
     }
 

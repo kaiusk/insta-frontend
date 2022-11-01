@@ -12,7 +12,7 @@ export default function Login() {
 
   // redirect authenticated user to profile screen
   useEffect(() => {
-    if (userInfo && userInfo.ID) {
+    if (userInfo && userInfo.id) {
       navigate("/");
     }
   }, [userInfo]);
@@ -35,13 +35,13 @@ export default function Login() {
   };
 
   return (
-    <section className="min-vh-100 d-flex bg-primary align-items-center">
+    <section className="min-vh-100 d-flex align-items-center">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 col-lg-6 justify-content-center">
             <div className="card bg-primary shadow-soft border-light p-4">
               <div className="card-header text-center pb-0">
-                <img src={"/assets/img/MINI_logo.png"} alt="logo" height={60} />
+                <img src={"/MINI_logo.svg"} alt="logo" height={60} />
                 <h2 className="h4 mt-3">Logi sisse</h2>
               </div>
               <div className="card-body">

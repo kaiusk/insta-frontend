@@ -10,7 +10,7 @@ export default function ErrorPage() {
     const { discover } = useSelector(state => state.posts);
 
     useEffect(()=>{
-        dispatch(recommendPosts(1))
+        dispatch(recommendPosts({}))
     }, [])
 
     return <div className="row mt-4">

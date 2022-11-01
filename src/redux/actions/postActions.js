@@ -6,7 +6,7 @@ export const getUserPosts = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await api.get(
-        "http://localhost:3001/api/v1/posts/" + id
+        "http://localhost:3001/api/v1/posts/overview/" + id
       );
       return data;
     } catch (error) {
@@ -83,19 +83,7 @@ export const showSlider = createAsyncThunk(
     "posts/media",
     async (id, {rejectWithValue}) => {
         try {
-            const {data} = await api.get('http://localhost:3001/api/v1/posts/media/'+ id);
-            return data;
-        } catch (error) {
-            return rejectWithValue("postitust ei leia :(");
-        }
-    }
-);
-
-export const getComments = createAsyncThunk(
-    "posts/comments",
-    async (id, {rejectWithValue}) => {
-        try {
-            const {data} = await api.get('http://localhost:3001/api/v1/posts/comments/'+ id);
+            const {data} = await api.get('http://localhost:3001/api/v1/posts/'+ id);
             return data;
         } catch (error) {
             return rejectWithValue("postitust ei leia :(");

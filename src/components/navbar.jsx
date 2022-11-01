@@ -6,20 +6,32 @@ import UserData from "./userData";
 import { Link } from "react-router-dom";
 import { userProfile } from "../redux/actions/userActions";
 
+
 export default function Navbar() {
-    const { userInfo, success } = useSelector(state => state.loginUser);
+    const { userInfo, success, error } = useSelector(state => state.loginUser);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (userInfo && userInfo.ID) {
-            dispatch(userProfile(userInfo.ID));
+        if (userInfo && userInfo.id) {
+            dispatch(userProfile(userInfo.id));
         }
     }, [success]);
 
-    if (userInfo && userInfo.ID) {
+    useEffect(() => {
+        if (error) {
+            if (error === 'unauthorized') {
+                dispatch(logout())
+            } else {
+                dispatch(setVariant("warning"));
+                //dispatch(show(error));
+            }
+        }
+    }, [error, dispatch]);
+
+    if (userInfo && userInfo.id) {
         return (
             <nav className="navbar navbar-expand-lg navbar-transparent navbar-light shadow-soft navbar-theme-primary">
                 <UserData user={userInfo}/>

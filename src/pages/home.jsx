@@ -5,40 +5,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts } from "../redux/actions/postActions";
 import { useNavigate } from "react-router";
 import { setVariant, show } from "../redux/reducers/toastReducer";
-import { logout } from "../redux/reducers/userReducer";
+
 
 export default function Home() {
     const { userInfo } = useSelector(state => state.loginUser);
-    const { posts, error, loading, likeAdded, likeRemoved } = useSelector(
+    const { posts } = useSelector(
         state => state.posts
     );
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userInfo.ID) {
-            dispatch(getUserPosts(userInfo.ID));
+        if (userInfo.id) {
+            dispatch(getUserPosts(userInfo.id));
         } else {
             navigate("/login");
         }
     }, [userInfo, dispatch]);
 
-    useEffect(() => {
-        if (error) {
-            if (error === 'unauthorized') {
-                dispatch(logout())
-            } else {
-                dispatch(setVariant("warning"));
-                dispatch(show(error));
-            }
-        }
-    }, [error, dispatch]);
-
-    useEffect(() => {
+    /*useEffect(() => {
         if (!loading && likeAdded) {
             dispatch(setVariant("primary"));
             dispatch(show("Laik lisatud!"));
-            dispatch(getUserPosts(userInfo.ID));
+            dispatch(getUserPosts(userInfo.id));
         }
     }, [likeAdded]);
 
@@ -46,9 +35,9 @@ export default function Home() {
         if (!loading && likeRemoved) {
             dispatch(setVariant("primary"));
             dispatch(show("Laik kustutatud!"));
-            dispatch(getUserPosts(userInfo.ID));
+            dispatch(getUserPosts(userInfo.id));
         }
-    }, [likeRemoved]);
+    }, [likeRemoved]);*/
 
     return (
         <div className="row mt-4">

@@ -7,7 +7,7 @@ const initialState = {
   pUserInfo: {},
   error: null,
   success: false, // for monitoring the registration process.
-  pProfile: null
+  //pProfile: null
 };
 
 const postUserSlice = createSlice({

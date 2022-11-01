@@ -59,9 +59,16 @@
 }
 
 .more-files {
-  bottom: 16px;
+  bottom: 40px;
   width: calc(100% - 36px);
   left: 18px;
   text-align: center;
   background: rgba(255, 255, 255, .25);
+}
+
+.content {
+  background-image: url("/assets/img/MINI_logo.png");
+  background-position: top, center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
