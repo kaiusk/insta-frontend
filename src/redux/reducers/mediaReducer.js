@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { showSlider } from "../actions/postActions";
+import { addComm, showSlider } from "../actions/postActions";
 
 const initialState = {
   show: false,
   post: [],
-  comments: []
+  commAdded: false
 };
 
 const mediaSlice = createSlice({
@@ -26,6 +26,17 @@ const mediaSlice = createSlice({
     },
     [showSlider.rejected]: (state, { payload }) => {
       state.show = false;
+    },
+    // comment
+    [addComm.pending]: state => {
+      state.commAdded = false;
+    },
+    [addComm.fulfilled]: (state, { payload }) => {
+      state.commAdded = true;
+      //state.post = payload;
+    },
+    [addComm.rejected]: (state, { payload }) => {
+      state.commAdded = false;
     },
   }
 });

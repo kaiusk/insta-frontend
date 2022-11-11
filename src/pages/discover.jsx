@@ -11,7 +11,7 @@ export default function ErrorPage() {
 
     useEffect(()=>{
         dispatch(recommendPosts({}))
-    }, [])
+    }, [dispatch])
 
     return <div className="row mt-4">
         <PostMedia/>

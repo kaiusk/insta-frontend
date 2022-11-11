@@ -10,11 +10,7 @@ export default function ErrorPage() {
             <div className="icon icon-shape shadow-inset border-light rounded-circle mb-3">
               <span className="fas fa-bug"></span>
             </div>
-            <h2 className="h4 mr-2">Lehte ei leitud :(</h2>
-            <p className="mb-0">
-              At Themesberg, we use human, brand, and cultural insights to
-              unlock strategic business opportunities for clients.
-            </p>
+            <h2 className="h4 mr-2 my-4">Sellist lehte ei leitud :(</h2>
             <Link to={"/"} className="btn btn-primary mt-4">
               Tagasi algusesse
             </Link>

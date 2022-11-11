@@ -1,4 +1,4 @@
-import { postUserProfile, userProfile } from "../actions/userActions";
+import { postUserProfile } from "../actions/userActions";
 import { createSlice } from "@reduxjs/toolkit";
 
 

@@ -16,7 +16,7 @@ export default function Toaster() {
         dispatch(hide());
       }, 3000);
     }
-  }, [toast.show]);
+  }, [toast.show, dispatch]);
   return (
     <ToastContainer className="p-3" position="top-end">
       <Toast show={showMe} bg={toast.variant}>

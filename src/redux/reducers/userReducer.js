@@ -1,4 +1,9 @@
-import { followUser, unfollowUser, userLogin } from "../actions/userActions";
+import {
+  followUser,
+  unfollowUser,
+  updateUser,
+  userLogin,
+} from "../actions/userActions";
 import { createSlice } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
@@ -23,16 +28,16 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    logout: state => {
+    logout: (state) => {
       state.userInfo = {};
       state.userToken = null;
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-    }
+    },
   },
   extraReducers: {
     // login user
-    [userLogin.pending]: state => {
+    [userLogin.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
@@ -48,7 +53,7 @@ const userSlice = createSlice({
       state.error = payload;
     },
     // follow/unfollow
-    [followUser.pending]: state => {
+    [followUser.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
@@ -60,7 +65,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
-    [unfollowUser.pending]: state => {
+    [unfollowUser.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
@@ -73,21 +78,21 @@ const userSlice = createSlice({
       state.error = payload;
     },
     // user profile
-    /*[userProfile.pending]: state => {
+    [updateUser.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
-    [userProfile.fulfilled]: (state, { payload }) => {
+    [updateUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
       state.userInfo = payload;
     },
-    [userProfile.rejected]: (state, { payload }) => {
+    [updateUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      state.profile = {};
-    }*/
-  }
+      //state.profile = {};
+    },
+  },
 });
 export const { logout } = userSlice.actions;
 export default userSlice.reducer;

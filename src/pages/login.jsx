@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/actions/userActions";
 import { useEffect } from "react";
 import { show } from "../redux/reducers/toastReducer";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { loading, error, userInfo } = useSelector(state => state.loginUser);
+  const { loading, error, userInfo } = useSelector((state) => state.loginUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -15,21 +15,21 @@ export default function Login() {
     if (userInfo && userInfo.id) {
       navigate("/");
     }
-  }, [userInfo]);
+  }, [userInfo, navigate]);
 
   useEffect(() => {
     if (error) {
       dispatch(show("Proovi uuesti!"));
     }
-  }, [error]);
+  }, [error, dispatch]);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     dispatch(
       userLogin({
         username: data.get("username"),
-        password: data.get("password")
+        password: data.get("password"),
       })
     );
   };
@@ -117,16 +117,16 @@ export default function Login() {
                   </button>
                 </form>
 
-                <div className="d-none">
+                {/*<div className="d-none">
                   <div className="d-block d-sm-flex justify-content-center align-items-center mt-4">
                     <span className="font-weight-normal">
                       Not registered?{" "}
                       <a href="#" className="font-weight-bold">
                         Loo kasutaja
-                      </a>
+                      </a href="#">
                     </span>
                   </div>
-                </div>
+                </div>*/}
               </div>
             </div>
           </div>

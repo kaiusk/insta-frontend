@@ -1,9 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 export default function UserData(props) {
-  //const { props.user, props.profile } = useSelector(state => state.loginUser);
-
   return (
     <>
       <div className="profile-image bg-primary shadow-inset border border-light rounded-circle p-2 mx-3 flex-shrink-0">
@@ -20,15 +17,15 @@ export default function UserData(props) {
       <div className={"d-none d-md-flex flex-row ml-3"}>
         <span className="badge badge-dark mr-3">
           <i className="fa-solid fa-message"></i>{" "}
-          <strong>{props.user.posts}</strong> posts
+          <strong>{props.user.posts}</strong> postitust
         </span>
         <span className="badge badge-dark mr-3">
           <i className="fa-solid fa-user"></i>{" "}
-          <strong>{props.user.followers}</strong> followers
+          <strong>{props.user.followers}</strong> jälgijat
         </span>
         <span className="badge badge-dark mr-3">
           <i className="fa-solid fa-user"></i>{" "}
-          <strong>{props.user.following}</strong> following
+          <strong>{props.user.following}</strong> jälgib
         </span>
       </div>
     </>

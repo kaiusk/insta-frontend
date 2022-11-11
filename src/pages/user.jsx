@@ -19,7 +19,7 @@ export default function UserPage() {
             dispatch(postUserProfile(id))
             dispatch(getPosts(id))
         }
-    }, [id])
+    }, [id, dispatch])
 
     function follow() {
         pUserInfo.follow ? dispatch(unfollowUser(pUserInfo.id)) : dispatch(followUser(pUserInfo.id))
