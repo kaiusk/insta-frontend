@@ -27,7 +27,6 @@ export default function Navbar() {
         dispatch(logout());
       } else {
         dispatch(setVariant("warning"));
-        //dispatch(show(error));
       }
     }
   }, [error, dispatch]);
@@ -43,7 +42,6 @@ export default function Navbar() {
           icon="fa-solid fa-plus"
           first={true}
         ></NavLink>
-
         <NavLink
           id="hometp"
           tooltip="Avaleht"

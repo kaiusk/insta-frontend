@@ -24,6 +24,9 @@ Avaleht. Näitab sisse loginud kasutaja poolt jälgitavate kasutajate poolt teht
 ### `/discover`
 Näitab postitusi, mille on teinud kasutajad, keda jälgivad kasutaja poolt jälgitavad kasutajad
 
+### `/user/:id`
+Näitab ühe kasutaja andmeid ja tema postitusi
+
 ### `/addpost`
 Saab lisada uue postituse
 

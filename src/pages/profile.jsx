@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../redux/actions/userActions";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { userInfo } = useSelector((state) => state.loginUser);
@@ -21,6 +22,9 @@ export default function Profile() {
         profileImageUrl,
       })
     );
+    setBio("");
+    setName("");
+    setProfileImageUrl("");
   };
 
   return (
@@ -103,9 +107,9 @@ export default function Profile() {
 
                   <hr />
                   <div className="d-flex justify-content-between">
-                    <button type="button" className="btn btn-primary">
+                    <Link to="/" className="btn btn-primary">
                       Tühista
-                    </button>
+                    </Link>
                     <button type="submit" className="btn btn-primary">
                       Salvesta
                     </button>

@@ -90,7 +90,6 @@ const userSlice = createSlice({
     [updateUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-      //state.profile = {};
     },
   },
 });
